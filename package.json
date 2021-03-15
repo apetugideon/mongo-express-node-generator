@@ -1,0 +1,22 @@
+{
+  "name": "mongo-express-node-generator",
+  "version": "1.0.4",
+  "description": "A mongo-express-node code generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apetugideon/mongo-express-node-generator.git"
+  },
+  "author": "Apetu Gideon Oluwatoyin",
+  "bin": {
+    "men-gen": "index.js"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apetugideon/mongo-express-node-generator/issues"
+  },
+  "homepage": "https://github.com/apetugideon/mongo-express-node-generator#readme"
+}

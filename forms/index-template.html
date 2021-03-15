@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Business Machines</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    
+    <body>
+      <div class="w3-top">{ TopNav }</div>
+      <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-animate-left sideNavContainer" id="mySidebar">
+          { SideNav }
+      </nav>
+      <div class="w3-overlay w3-hide-large overlayContainer" onclick="w3_close()" title="close side menu" id="myOverlay"></div>
+      <div class="w3-main mainContainer">
+          <div class="w3-row w3-padding-64">
+              <div class="w3-twothird w3-container">
+                <div class="divContainer">
+                    <div class="header-container">
+                        <div class="lfloat">
+                            <h1 class="header-title">{ pageName } List</h1>
+                        </div>
+                        <div class="rfloat">
+                            <a href="../../pages/{ tableNameLower }/create.html" class="btn btn-success">+ Add New</a>
+                        </div>
+                        <div class="rfloat searchBoxContainer">
+                            <input type="text" class="fm-con fm-con-solid searchBox" id="search{ modelName }" name="search{ modelName }" placeholder="Search { pageName }">
+                        </div>
+                    </div>
+                    <table class="table table-hover table-striped">
+                        <thead class="thead-light">
+                          <tr>
+                            { tdHeaders }
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <div class="rep-footer-container">
+                        <div class="paginationContainer">
+                            <ul id="pagination" class="pagination justify-content-end"></ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="w3-third w3-container">
+                <div class="divContainer rightPane"></div>
+              </div>
+          </div>
+      </div>
+    </body>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/crud.js"></script>
+    <script src="./scripts.js"></script>
+    <script>
+      Template();
+      fetchReports();
+      let search{ modelName } = document.querySelector("#search{ modelName }");
+      if (search{ modelName }) {
+        search{ modelName }.addEventListener('blur', () => {
+            fetchReports(1, search{ modelName }.value);
+        });
+      }
+    </script>
+</html>

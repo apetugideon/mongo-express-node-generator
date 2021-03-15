@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Business Machines</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../css/styles.css">
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <body>
+      <div class="w3-top">{ TopNav }</div>
+      <nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-animate-left sideNavContainer" id="mySidebar">
+          { SideNav }
+      </nav>
+      <div class="w3-overlay w3-hide-large overlayContainer" onclick="w3_close()" title="close side menu" id="myOverlay"></div>
+      <div class="w3-main mainContainer">
+          <div class="w3-row w3-padding-64">
+              <div class="w3-twothird w3-container">
+                <div class="divContainer">
+                    <div class="header-container">
+                        <div class="lfloat">
+                            <h1 class="header-title">Create { pageName }</h1>
+                        </div>
+                        <div class="rfloat">
+                            <a href="../../pages/{ tableName }" class="btn btn-success">{ pageName } List</a>
+                        </div>
+                        <div class="rfloat" style="margin-right: 10px;">
+                            <a href="#" class="btn btn-outline-info" onclick="switchUploadForm(this)">Upload</a>
+                        </div>
+                    </div>
+                    <div id="excelUploadForm" style="display: none;">
+                        <div class="form-group">
+                            <label for="file2upload">Select Excel File</label>
+                            <input type="file" id="file2upload" name="file2upload" class="fm-con fm-con-solid" placeholder="Select file" style="padding: 3px;">
+                            <small id="namesNotifId" class="form-text text-muted">xls, xlsx</small>
+                        </div>
+                        <table class="table table-hover table-striped">
+                            <thead class="thead-light">
+                              <tr>
+                                { uploadFieldsTds }
+                              </tr>
+                            </thead>
+                            <tbody id="excelValues2Upload"></tbody>
+                        </table>
+                        <div>
+                            <button id="excelUploadButton" type="button" class="btn btn-success mr-2">Upload</button>
+                            <button id="excelUploadReset" type="button" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                    <div id="addOneForm" style="display: block;">
+                        <form id="{ modelName }Form" action="" method="post"{ includeEnctype }>
+                            { formInputStrings }
+                            <div>
+                                <button type="submit" class="btn btn-success mr-2">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+              </div>
+              <div class="w3-third w3-container">
+                <div class="divContainer rightPane"></div>
+              </div>
+          </div>
+      </div>
+    </body>
+    <script src="../../js/script.js"></script>
+    <script src="../../js/crud.js"></script>
+    <script src="./scripts.js"></script>
+    <script>
+        Template();
+        submitForm();
+        initFormData();
+        excelFileUpload("processExcelFileUploaded");
+        let qString = queryParams(window.location.href);
+        if (Object.keys(qString).length) {
+            fetchOne(qString.{ tableNameSingular });
+        }
+        { fileUploadScripts }
+    </script>
+</html>
